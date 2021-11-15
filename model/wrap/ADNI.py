@@ -67,11 +67,11 @@ class AdniDataSet(Dataset):
         img_array = self.__nii2tensorarray__(img_array)
 
         patches1 = np.zeros((img_array.shape[1], 1, img_array.shape[2], img_array.shape[3]),
-                           dtype='float64')
+                           dtype='uint8')
         patches2 = np.zeros((img_array.shape[1], 1, img_array.shape[2], img_array.shape[3]),
-                           dtype='float64')
+                           dtype='uint8')
         patches3 = np.zeros((img_array.shape[1], 1, img_array.shape[2], img_array.shape[3]),
-                           dtype='float64')
+                           dtype='uint8')
 
         for i in range(img_array.shape[1]):
             patches1[i, ...] = self.__itensity_normalize_one_volume__(img_array[:, i, :, :])
@@ -91,7 +91,7 @@ class AdniDataSet(Dataset):
             out: the normalized nd volume
         """
 
-        pixels = volume[volume >= 0]
+        pixels = volume[volume > 0]
         mean = pixels.mean()
         std = pixels.std()
         out = (volume - mean) / std
