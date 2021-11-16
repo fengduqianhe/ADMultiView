@@ -66,17 +66,17 @@ class AdniDataSet(Dataset):
         img_array = self.__training_data_process__(img)
         img_array = self.__nii2tensorarray__(img_array)
 
-        patches1 = np.zeros((img_array.shape[1], 1, img_array.shape[2], img_array.shape[3]),
-                           dtype='uint8')
-        patches2 = np.zeros((img_array.shape[1], 1, img_array.shape[2], img_array.shape[3]),
-                           dtype='uint8')
-        patches3 = np.zeros((img_array.shape[1], 1, img_array.shape[2], img_array.shape[3]),
-                           dtype='uint8')
+        patches1 = np.zeros((40, 1, img_array.shape[2], img_array.shape[3]),
+                            dtype='float64')
+        patches2 = np.zeros((40, 1, img_array.shape[2], img_array.shape[3]),
+                            dtype='float64')
+        patches3 = np.zeros((40, 1, img_array.shape[2], img_array.shape[3]),
+                            dtype='float64')
 
-        for i in range(img_array.shape[1]):
-            patches1[i, ...] = self.__itensity_normalize_one_volume__(img_array[:, i, :, :])
-            patches2[i, ...] = self.__itensity_normalize_one_volume__(img_array[:, :, i, :])
-            patches3[i, ...] = self.__itensity_normalize_one_volume__(img_array[:, :, :, i])
+        for i in range(0, 40):
+            patches1[i, ...] = self.__itensity_normalize_one_volume__(img_array[:, i+20, :, :])
+            patches2[i, ...] = self.__itensity_normalize_one_volume__(img_array[:, :, i+20, :])
+            patches3[i, ...] = self.__itensity_normalize_one_volume__(img_array[:, :, :, i+20])
 
         img_array = self.__itensity_normalize_one_volume__(img_array)
 
