@@ -173,14 +173,14 @@ class FirstNet(nn.Module):
         self.fc2 = nn.Linear(256, 64)
         self.fc3 = nn.Linear(64, 2)
 
-        self.fc_att1 = nn.Linear(90 * 8, 128)
-        self.fc_att2 = nn.Linear(90 * 8, 128)
-        self.fc_att3 = nn.Linear(90 * 8, 128)
+        self.fc_att1 = nn.Linear(40 * 8, 128)
+        self.fc_att2 = nn.Linear(40 * 8, 128)
+        self.fc_att3 = nn.Linear(40 * 8, 128)
 
         self.avgpool = nn.AdaptiveAvgPool3d((1, 1, 1))
-        self.single_list1 = nn.ModuleList([single_net(f=4) for i in range(90)])
-        self.single_list2 = nn.ModuleList([single_net(f=4) for i in range(90)])
-        self.single_list3 = nn.ModuleList([single_net(f=4) for i in range(90)])
+        self.single_list1 = nn.ModuleList([single_net(f=4) for i in range(40)])
+        self.single_list2 = nn.ModuleList([single_net(f=4) for i in range(40)])
+        self.single_list3 = nn.ModuleList([single_net(f=4) for i in range(40)])
         # self.single = single_net(f=4)
 
 
@@ -189,7 +189,7 @@ class FirstNet(nn.Module):
         branch2 = []
         branch3 = []
 
-        for i_num in range(0, 90):
+        for i_num in range(0, 40):
             branch1.append(self.single_list1[i_num].forward(x2[:, i_num]).unsqueeze(1))
             branch2.append(self.single_list2[i_num].forward(x3[:, i_num]).unsqueeze(1))
             branch3.append(self.single_list3[i_num].forward(x4[:, i_num]).unsqueeze(1))
