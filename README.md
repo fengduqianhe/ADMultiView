@@ -19,4 +19,4 @@ Linux python 3.7 Pytorch version 1.2.0 NVIDIA GPU + CUDA CuDNN (CPU mode, untest
 
 ## Note
 Please cite our paper if you use this code in your own work.
-
+H. Qiao, L. Chen and F. Zhu, "A Fusion of Multi-view 2D and 3D Convolution Neural Network based MRI for Alzheimer’s Disease Diagnosis," 2021 43rd Annual International Conference of the IEEE Engineering in Medicine & Biology Society (EMBC), 2021, pp. 3317-3321, doi: 10.1109/EMBC46164.2021.9629923.
